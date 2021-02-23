@@ -12,12 +12,19 @@ puts '-----------------------------'
 puts 'Cleaning up database...'
 puts '-----------------------------'
 
-Clothe.destroy_all
 User.destroy_all
+Product.destroy_all
 
 puts '-----------------------------'
 puts 'Database is clear!'
 puts '-----------------------------'
+puts 'Creating User!'
+puts '-----------------------------'
+
+
+category = %w[casual party street]
+type = %w[shorts tshirt dress]
+size = %w[PP P M G GG XGG 38 40 42 44 46 48 50 52 54 56 58 60]
 
 10.times do 
   user = User.create!(
@@ -31,11 +38,35 @@ puts '-----------------------------'
     password: "123456789ABC"
   )
   puts "The user #{user.id} created"
+  puts '-----------------------------'
+  puts 'Uploading some clotes...'
+  puts '-----------------------------'
+
+
+
+  3.times do 
+    product = Product.create!(
+      name: Faker::Color.color_name,
+      buyable: [true, false].sample,
+      exchangeable: [true, false].sample,
+      price: (rand(5.00..100.00).floor(2) if :buyable == true),
+      category: category.sample,
+      product_type: type.sample,
+      size: size.sample,
+      avaible: true,
+      description: Faker::Lorem.sentence(word_count: 10),
+      user_id: user.id
+    )
+    puts "The #{product.name}, with #{product.id} of #{user.id} created"
+  end
 end
 
-puts '-----------------------------'
-puts 'Uploading some clotes...'
-puts '-----------------------------'
+
+
+
+
+
+
 
 # quantities = [
 #   '3 spoons', '150ml', '100ml', '50ml', '2 leaves',
