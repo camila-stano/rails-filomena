@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :validate_current_user, only: %i[edit update destroy]
 
   def index
-    @products = Product.all
+    @products = Product.all.shuffle
   end
 
   def show
