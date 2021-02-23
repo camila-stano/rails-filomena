@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_213600) do
+ActiveRecord::Schema.define(version: 2021_02_23_153455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "clothes", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string "name"
     t.boolean "buyable"
     t.boolean "exchangeable"
@@ -28,19 +28,19 @@ ActiveRecord::Schema.define(version: 2021_02_22_213600) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_clothes_on_user_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "trades", force: :cascade do |t|
     t.boolean "super_like"
-    t.string "status"
+    t.string "status", default: "incomplete"
     t.text "review_content"
     t.decimal "review_rating"
-    t.bigint "clothes_id", null: false
+    t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["clothes_id"], name: "index_trades_on_clothes_id"
+    t.index ["product_id"], name: "index_trades_on_product_id"
     t.index ["user_id"], name: "index_trades_on_user_id"
   end
 
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_213600) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "clothes", "users"
-  add_foreign_key "trades", "clothes", column: "clothes_id"
+  add_foreign_key "products", "users"
+  add_foreign_key "trades", "products"
   add_foreign_key "trades", "users"
 end
