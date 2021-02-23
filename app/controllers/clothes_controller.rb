@@ -3,6 +3,7 @@ class ClothesController < ApplicationController
   before_action :validate_current_user, only: %i[edit update destroy]
 
   def index
+    @clothes = Clothe.all.shuffle
   end
 
   def show
