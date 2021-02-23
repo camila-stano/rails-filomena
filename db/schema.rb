@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_155706) do
     t.boolean "exchangeable"
     t.decimal "price"
     t.string "category"
-    t.string "type"
+    t.string "product_type"
     t.string "size"
     t.boolean "available"
     t.text "description"
@@ -86,6 +86,6 @@ ActiveRecord::Schema.define(version: 2021_02_23_155706) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "products", "users"
-  add_foreign_key "trades", "products", column: "products_id"
+  add_foreign_key "trades", "products"
   add_foreign_key "trades", "users"
 end
