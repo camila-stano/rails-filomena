@@ -1,8 +1,9 @@
 class ClothesController < ApplicationController
   before_action :set_clothe, only: %i[show edit update destroy]
+  before_action :validate_current_user, only: %i[edit update destroy]
 
   def index
-    @clothes = Clothe.all.shuffle
+    current_user ? @clothes = Clothe.all.shuffle : redirect_to root_path
   end
 
   def show
@@ -14,6 +15,8 @@ class ClothesController < ApplicationController
 
   def create
     @clothe = Clothe.new(clothe_params)
+    @clothe.user = current_user
+
     if @clothe.save
       redirect_to @clothe
     else
@@ -27,7 +30,7 @@ class ClothesController < ApplicationController
   def update
     @clothe.update(clothe_params)
     if @clothe.save
-      redirect_to @clothe
+      redirect_to @clothe, notice: "Editado com sucesso!"
     else
       render :edit
     end
@@ -39,6 +42,13 @@ class ClothesController < ApplicationController
   end
 
   private
+
+  def validate_current_user
+    if @clothe.user != current_user
+      redirect_to clothes_path, alert: "Você só pode alterar as roupas do seu armário!"
+      return
+    end 
+  end
 
   def set_clothe
     @clothe = Clothe.find(params[:id])
