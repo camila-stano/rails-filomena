@@ -3,7 +3,6 @@ class ClothesController < ApplicationController
   before_action :validate_current_user, only: %i[edit update destroy]
 
   def index
-    current_user ? @clothes = Clothe.all.shuffle : redirect_to root_path
   end
 
   def show
@@ -55,7 +54,8 @@ class ClothesController < ApplicationController
   end
 
   def clothe_params
-    params.require(:clothe).permit(:name :buyable :exchangeable :price :category :type :size :available :description)
+    params.require(:clothe).permit(:name, :buyable, :exchangeable, :price, 
+                                   :category, :type, :size, :available, :description)
   end
 
 end
