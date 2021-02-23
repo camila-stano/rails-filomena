@@ -56,7 +56,7 @@ class ClothesController < ApplicationController
 
   def clothe_params
     params.require(:clothe).permit(:name, :buyable, :exchangeable, :price, 
-                                   :category, :type, :size, :available, :description)
+                                   :category, :type, :size, :available, :description, :photos)
   end
 
 end
