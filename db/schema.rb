@@ -15,31 +15,53 @@ ActiveRecord::Schema.define(version: 2021_02_23_180120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "clothes", force: :cascade do |t|
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "products", force: :cascade do |t|
     t.string "name"
     t.boolean "buyable"
     t.boolean "exchangeable"
     t.decimal "price"
     t.string "category"
+    t.string "product_type"
     t.string "size"
     t.boolean "available"
     t.text "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_clothes_on_user_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "trades", force: :cascade do |t|
     t.boolean "super_like"
-    t.string "status"
+    t.string "status", default: "incomplete"
     t.text "review_content"
     t.decimal "review_rating"
-    t.bigint "clothes_id", null: false
+    t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["clothes_id"], name: "index_trades_on_clothes_id"
+    t.index ["product_id"], name: "index_trades_on_product_id"
     t.index ["user_id"], name: "index_trades_on_user_id"
   end
 
@@ -62,7 +84,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_180120) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "clothes", "users"
-  add_foreign_key "trades", "clothes", column: "clothes_id"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "products", "users"
+  add_foreign_key "trades", "products"
   add_foreign_key "trades", "users"
 end

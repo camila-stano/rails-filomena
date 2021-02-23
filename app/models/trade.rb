@@ -1,4 +1,4 @@
 class Trade < ApplicationRecord
   belongs_to :user
-  belongs_to :clothe
+  belongs_to :product
 end
