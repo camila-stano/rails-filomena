@@ -1,1 +1,17 @@
 // Specific CSS for your home-page
+body {
+  background-color: $filo-blue;
+}
+
+h1 {
+  font-family: $filo-logo;
+  color: $filo-gold;
+  font-size: 85px;
+  margin-top: 200px;
+}
+
+h5 {
+  font-family: $filo-logo;
+  color: $filo-gold;
+  font-size: 30px;
+}
