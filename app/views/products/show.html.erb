@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<%= @product.name %>
-<%= link_to "edit", edit_product_path(@product)%>
-=======
 <% @product.photos.each do |photo| %>
   <%= cl_image_tag photo.key, transformation: [{crop: "crop", width: 900, height:1400},{width: 200, height: 400, gravity: 'auto', crop: "fill", quality: 100}] %>
 <% end %>
->>>>>>> master
