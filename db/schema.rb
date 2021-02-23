@@ -36,32 +36,32 @@ ActiveRecord::Schema.define(version: 2021_02_23_155706) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "clothes", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string "name"
     t.boolean "buyable"
     t.boolean "exchangeable"
     t.decimal "price"
     t.string "category"
-    t.string "type"
+    t.string "product_type"
     t.string "size"
     t.boolean "available"
     t.text "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_clothes_on_user_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "trades", force: :cascade do |t|
     t.boolean "super_like"
-    t.string "status"
+    t.string "status", default: "incomplete"
     t.text "review_content"
     t.decimal "review_rating"
-    t.bigint "clothes_id", null: false
+    t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["clothes_id"], name: "index_trades_on_clothes_id"
+    t.index ["product_id"], name: "index_trades_on_product_id"
     t.index ["user_id"], name: "index_trades_on_user_id"
   end
 
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_155706) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "clothes", "users"
-  add_foreign_key "trades", "clothes", column: "clothes_id"
+  add_foreign_key "products", "users"
+  add_foreign_key "trades", "products"
   add_foreign_key "trades", "users"
 end
