@@ -6,4 +6,6 @@
                 label: false %>
   <% end %>
   <%= link_to "Enviar", products_path, class: 'btn btn-warning rounded' %>
-</div>
+  <%= link_to "Enviar e ir para minhas trades", trades_path(current_user), class: 'btn btn-warning rounded' %>
+
+</div> 
