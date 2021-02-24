@@ -3,6 +3,7 @@ class TradesController < ApplicationController
   # before_action :validate_current_user
 
   def index
+    # @trades = Trade.all
   end
 
   def new
