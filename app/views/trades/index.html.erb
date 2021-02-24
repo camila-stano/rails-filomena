@@ -1,6 +1,7 @@
+<%= render "shared/navbar" %>
 
 <% current_user.trades.each |trade| %>
   <%= trade.product %>
-  <%= trade.content %> 
+  <%#= trade.content %> 
   <%= trade.product.user.first_name %>
 <% end %>
