@@ -1,5 +1,5 @@
 <div class="container container-forms form-group">
-  <h2>Crie sua conta!</h2>
+  <h2 class = 'mb-3'>Crie sua conta!</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -13,9 +13,9 @@
                   input_html: { autocomplete: "email" }%>
       <%= f.input :password,
                   required: true,
-                  placeholder: 'Password',
+                  placeholder: 'senha',
                   label: false,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  hint: ("#{@minimum_password_length} caracteres no mínimo" if @minimum_password_length),
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :password_confirmation,
                   required: true,
