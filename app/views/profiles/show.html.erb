@@ -12,11 +12,11 @@
 </div>
 <div class="info-not-available"></div>
 
-<div class="row">
+<div class="row d-flex">
   <% @profile.products.each do |product|  %>
     <%product.photos.each do |photo|%>
-      <div class="col-xs-12 col-md-4">
-        <%= cl_image_tag(photo.key, class: 'square-image') %>
+      <div class="col-4">
+        <%= cl_image_tag(photo.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 330, height: 330, gravity: 'auto', quality: 100}], class: 'img-fluid ') %>
       </div>
     <%end%>
   <%end%>
