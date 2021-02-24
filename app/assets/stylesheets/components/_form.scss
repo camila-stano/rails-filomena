@@ -7,21 +7,25 @@ $space-between-buttons: 15px;
   color: $filo-light;
   font-family: nunito;
 }
+
 .btn-link {
   color: $filo-gold;
   width: 100%;
   font-size: $font-size-link;
   margin-top: $space-between-buttons;
 }
+
 .btn-main {
   width: 100%;
   background-color: $filo-tifany;
   border: none;
 }
+
 .container-forms > h2 {
   color: $filo-orange;
   font-family: $filo-logo;
 }
+
 .forgot-password{
   font-size: $font-size-link;
   display: inline-block;
