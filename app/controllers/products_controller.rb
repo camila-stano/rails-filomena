@@ -3,7 +3,18 @@ class ProductsController < ApplicationController
   before_action :validate_current_user, only: %i[edit update destroy]
 
   def index
-    @products = Product.all.shuffle
+    @availables = Product.where(available: true).shuffle
+    #o botão de login encaminha para uma página de show aleatória que ainda exista
+
+    raise
+
+
+    #a seta será exclusivamente para a direita, que implica em trocar de peça, randomicamente
+    
+    #um botão com o x tira aquela peça do array de possibilidades que o cliente poderá ver
+    reject <
+    #um botão de coração inicia a transação
+    
   end
 
   def show
