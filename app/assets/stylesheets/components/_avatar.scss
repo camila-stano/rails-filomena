@@ -2,12 +2,36 @@
   width: 40px;
   border-radius: 50%;
 }
-.avatar-large {
-  width: 10vw;
-  height: 15vh;
-  border-radius: 50%;
-  border: red solid 1px;
+
+@media only screen and (min-width: 360px) {
+  .avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-size: cover;
+  }
 }
+
+@media only screen and (min-width: 600px) {
+  .avatar-large {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-size: cover;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .avatar-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-size: cover;
+  }
+}
+
+
+
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;

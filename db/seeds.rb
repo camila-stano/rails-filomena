@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require "open-uri"
 
 puts '-----------------------------'
 puts 'Cleaning up database...'
@@ -42,9 +43,10 @@ size = %w[PP P M G GG XGG 38 40 42 44 46 48 50 52 54 56 58 60]
   puts "Uploading some products to #{user.first_name}..."
   puts '-----------------------------'
 
-
+ 
 
   3.times do 
+    file = URI.open('https://source.unsplash.com/featured/?jeans,%20clothes,looks')
     product = Product.create!(
       name: Faker::Color.color_name,
       buyable: [true, false].sample,
@@ -57,6 +59,8 @@ size = %w[PP P M G GG XGG 38 40 42 44 46 48 50 52 54 56 58 60]
       description: Faker::Lorem.sentence(word_count: 10),
       user_id: user.id
     )
+    product.photos.attach(io: file, filename: 'photo.png', content_type: 'image/png')
+    
     puts "The product #{product.id} of #{user.first_name} created"
   end
   puts "***********************************"
