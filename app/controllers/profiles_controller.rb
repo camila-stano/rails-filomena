@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[show edit update]
 
   def show
-
+    @product = @profile.products.first
   end
 
   def edit
