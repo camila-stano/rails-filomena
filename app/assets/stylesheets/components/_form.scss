@@ -28,10 +28,13 @@ $space-between-buttons: 15px;
   font-family: $filo-logo;
 }
 
-.forgot-password{
+.forgot-password {
   font-size: $font-size-link;
   display: inline-block;
   margin-top: $space-between-buttons;
   width: 100%;
-  font-size: 12px;
+}
+.btn-create {
+  color: $filo-white;
+  width: 100%;
 }

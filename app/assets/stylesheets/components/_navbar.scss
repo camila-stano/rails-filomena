@@ -9,7 +9,7 @@ h2 {
   margin-bottom: 0;
 }
 
-h2 a {
+.nav-logo {
   text-decoration: none;
   font-family: $filo-logo;
   color: $filo-gold;
@@ -33,6 +33,14 @@ h2 a:hover {
   width: 120px;
 }
 
+.name-index {
+  color: $filo-white;
+  margin-right: 20px;
+  align-items: center;
+  font-family: $headers-font;
+  font-size: 18px;
+}
+
 .nav-messages:hover {
   text-decoration: none;
   color: $filo-tifany
@@ -41,3 +49,5 @@ h2 a:hover {
 .dropdown-item {
   font-size: 15px;
 }
+
+
