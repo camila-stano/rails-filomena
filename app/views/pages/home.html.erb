@@ -7,7 +7,11 @@
     <div class="d-flex justify-content-center">
       <div class="m-5">
         <%= link_to "Crie sua conta", new_user_registration_path, class: 'btn btn-outline-warning rounded' %>
-        <%= link_to "Faça login", new_user_session_path, class: 'btn btn-outline-warning rounded' %>
+        <% if current_user.present? %>
+          <%= link_to "Faça login", products_path, class: 'btn btn-outline-warning rounded' %>
+        <% else %>
+          <%= link_to "Faça login", new_user_session_path, class: 'btn btn-outline-warning rounded' %>
+        <% end %>
       </div>
     </div>
   </div>

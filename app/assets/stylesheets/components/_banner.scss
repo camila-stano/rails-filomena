@@ -90,4 +90,19 @@
     font-size: 15px;
     padding-left: 10px;
   }
+.arrow {
+  height: 450px;
+  width: 100%;
+}
+
+.arrow i {
+  color: $filo-gold;
+}
+
+.arrow i:hover {
+  color: $filo-blue;
+}
+
+.banner-clothes {
+  height: 450px;
 }
