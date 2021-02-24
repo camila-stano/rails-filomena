@@ -1,47 +1,50 @@
-<h2>Crie sua conta!</h2>
+<div class="container container-forms form-group">
+  <h2>Crie sua conta!</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                placeholder: 'Email',
-                label: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                placeholder: 'Password',
-                label: false,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                placeholder: 'Confirm password',
-                label: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :first_name,
-                placeholder: 'Nome',
-                label: false %>
-    <%= f.input :last_name,
-                placeholder: 'Sobrenome',
-                label: false %>
-    <%= f.input :phone,
-                placeholder: 'Telefone',
-                label: false %>
-    <%= f.input :address,
-                placeholder: 'Endereço',
-                label: false %>
-    <%= f.input :cpf,
-                placeholder: 'CPF',
-                label: false %>
-    <%= f.input :bday, label: 'Data de nascimento' %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: true,
+                  placeholder: 'Email',
+                  label: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  placeholder: 'Password',
+                  label: false,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  placeholder: 'Confirm password',
+                  label: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :first_name,
+                  placeholder: 'Nome',
+                  label: false %>
+      <%= f.input :last_name,
+                  placeholder: 'Sobrenome',
+                  label: false %>
+      <%= f.input :phone,
+                  placeholder: 'Telefone',
+                  label: false %>
+      <%= f.input :address,
+                  placeholder: 'Endereço',
+                  label: false %>
+      <%= f.input :cpf,
+                  placeholder: 'CPF',
+                  label: false %>
+      <%= f.input :bday, label: 'Data de nascimento' %>
+      <%= f.input :photo, as: :file, label: 'Foto de perfil' %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Crie sua conta", class: 'btn btn-main' %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "Crie sua conta", class: 'btn btn-main' %>
+    </div>
+  <% end %>
 
-<%#= render "devise/shared/links" %>
+  <%#= render "devise/shared/links" %>
+</div>
