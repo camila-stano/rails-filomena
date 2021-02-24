@@ -1,15 +1,17 @@
 <%= render "shared/navbar" %>
 
 <div class="container">
-  <div class="row">
+  <div class="row"> 
     <div class="banner-user", style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(128,128,128,0.1)), 
-                  <%# url('<%= cl_image_path @product.first.photo.key, transformation: [{crop: "crop", width: 900, height:1400},{width: 200, height: 400, gravity: 'auto', crop: "fill", quality: 100}] %>')"> 
-      <div class="avatar-large">
-        <%# <%= cl_image_path @product.user.photo.key %> 
-      </div>
-      <div class="name-rating">
-        <%= @product.user.first_name %> 
-        <%# <%= @product.user.rating %>       
+                    <%# url('<%= cl_image_path @product.first.photo.key, transformation: [{crop: "crop", width: 900, height:1400},{width: 200, height: 400, gravity: 'auto', crop: "fill", quality: 100}] %>')"> 
+      <div class="col-12">
+        <div class="avatar-large" style="background-image: url('https://avatars.githubusercontent.com/u/73120794?s=460&u=e1d1d4a29bf7f5de070ef5f48ef7b39618511f1f&v=4')">
+          <%# <img src="https://avatars.githubusercontent.com/u/73120794?s=460&u=e1d1d4a29bf7f5de070ef5f48ef7b39618511f1f&v=4" alt=""> %>
+        </div>
+        <div class="name-rating">
+          <%= @product.user.first_name %> 
+          <%# <%= @product.user.rating %>       
+        </div>
       </div>
     </div>
   </div>
