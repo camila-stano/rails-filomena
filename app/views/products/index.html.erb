@@ -1,19 +1,22 @@
-<div class="row d-flex justify-content-center">
-  <% @products.each do |product| %>
-    <div class="col-12 my-3">
-      <%= link_to product_path(product) do %>
-        <% if product.photos.present? %>
-          <div class="card-category py-3"
-               style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(128,128,128,0.1)), 
-               url('<%= cl_image_path product.first.photo.key, transformation: [{crop: "crop", width: 900, height:1400},{width: 200, height: 400, gravity: 'auto', crop: "fill", quality: 100}] %>')">              
-        <% else %>
-          <div class="card-category py-3" 
-               style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(128,128,128,0.1)), 
-               url('https://images.unsplash.com/photo-1494537176433-7a3c4ef2046f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80')">
+<%= render "shared/navbar" %>
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <% @products.each do |product| %>
+      <div class="col-12 my-3">
+        <%= link_to product_path(product) do %>
+          <% if product.photos.present? %>
+            <div class="card-category py-3"
+                style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(128,128,128,0.1)), 
+                url('<%= cl_image_path product.first.photo.key, transformation: [{crop: "crop", width: 900, height:1400},{width: 200, height: 400, gravity: 'auto', crop: "fill", quality: 100}] %>')">              
+          <% else %>
+            <div class="card-category py-3" 
+                style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(128,128,128,0.1)), 
+                url('https://images.unsplash.com/photo-1494537176433-7a3c4ef2046f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80')">
+          <% end %>
+          <%= product.name %>
+          </div>
         <% end %>
-        <%= product.name %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

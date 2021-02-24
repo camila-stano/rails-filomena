@@ -1,5 +1,5 @@
 // Specific CSS for your home-page
-body {
+.background-home {
   background-color: $filo-blue;
 }
 
@@ -14,4 +14,14 @@ h5 {
   font-family: $filo-logo;
   color: $filo-gold;
   font-size: 30px;
+}
+
+a {
+  font-family: $headers-font;
+  font-size: 24px;
+  width: 150px;
+}
+
+body {
+  background-color: $filo-white;
 }

@@ -1,12 +1,43 @@
 .navbar-lewagon {
+  display: flex;
   justify-content: space-between;
-  background: white;
+  text-align: center;
+  background: $filo-blue;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+h2 a {
+  text-decoration: none;
+  font-family: $filo-logo;
+  color: $filo-gold;
+  font-size: 29px;
+}
+
+h2 a:hover {
+  text-decoration: none;
+  color: $filo-tifany;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.nav-messages {
+  text-decoration: none;
+  color: $filo-white;
+  font-family: $headers-font;
+  font-size: 18px;
+  width: 120px;
+}
+
+.nav-messages:hover {
+  text-decoration: none;
+  color: $filo-tifany
+}
+
+.dropdown-item {
+  font-size: 15px;
 }
