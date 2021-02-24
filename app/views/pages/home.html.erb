@@ -1,6 +1,14 @@
-<div class="container">
-  <div class="text-center">
-    <h1>Filomenna</h1>
-    <h5>Seja-bem vindo!</h5>
+<body class="background-home">
+  <div class="container">
+    <div class="text-center">
+      <h1>Filomenna</h1>
+      <h5>Seja-bem vindo!</h5>
+    </div>
+    <div class="d-flex justify-content-center">
+      <div class="m-5">
+        <%= link_to "Crie sua conta", new_user_registration_path, class: 'btn btn-outline-warning rounded' %>
+        <%= link_to "Faça login", new_user_session_path, class: 'btn btn-outline-warning rounded' %>
+      </div>
+    </div>
   </div>
-</div>
+</body>
