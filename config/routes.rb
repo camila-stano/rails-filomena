@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'pages#home'
+  devise_for :users
+  resources :profiles, only: [:show]
 
   resources :products do
     resources :trades, only: [:new, :create]
