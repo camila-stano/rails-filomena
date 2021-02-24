@@ -1,2 +1,9 @@
-<h1>Trades#new</h1>
-<p>Find me in app/views/trades/new.html.erb</p>
+<div class="container container-forms form-group">
+  <h2 class = 'mb-3'>Faça sua proposta!</h2>
+
+    <%= simple_form_for [@product, @trade] do |f| %>
+    <%= f.input :content,
+                label: false %>
+  <% end %>
+  <%= link_to "Enviar", products_path, class: 'btn btn-warning rounded' %>
+</div>
