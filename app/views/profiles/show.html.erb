@@ -12,12 +12,15 @@
 </div>
 <div class="info-not-available"></div>
 
-<div class="product-grid">
+<div class="row">
   <% @profile.products.each do |product|  %>
     <%product.photos.each do |photo|%>
-     <%= cl_image_tag(photo) %>
+      <div class="col-xs-12 col-md-4">
+        <%= cl_image_tag(photo.key, class: 'square-image') %>
+      </div>
     <%end%>
   <%end%>
 </div>
+<br><br><br><br><br>
 
 <%# link_to review %>
