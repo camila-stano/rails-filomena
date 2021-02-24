@@ -1,3 +1,6 @@
+$font-size-link: 15px;
+$space-between-buttons: 15px;
+
 .container-forms {
   width: 30%;
   margin-top: 50px;
@@ -7,6 +10,8 @@
 .btn-link {
   color: $filo-gold;
   width: 100%;
+  font-size: $font-size-link;
+  margin-top: $space-between-buttons;
 }
 .btn-main {
   width: 100%;
@@ -16,4 +21,10 @@
 .container-forms > h2 {
   color: $filo-orange;
   font-family: $filo-logo;
+}
+.forgot-password{
+  font-size: $font-size-link;
+  display: inline-block;
+  margin-top: $space-between-buttons;
+  width: 100%;
 }

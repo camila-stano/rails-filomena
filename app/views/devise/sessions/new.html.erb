@@ -1,5 +1,5 @@
 <div class="container container-forms form-group">
-  <h2>Login</h2>
+  <h2 class = 'mb-3'>Login</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
@@ -11,10 +11,10 @@
                   input_html: { autocomplete: "email" } %>
       <%= f.input :password,
                   required: false,
-                  placeholder: 'Password',
+                  placeholder: 'senha',
                   label: false,
                   input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <%= f.input :remember_me, as: :boolean, label: 'Lembre de mim!' if devise_mapping.rememberable? %>
     </div>
 
     <div class="form-actions">
