@@ -1,3 +1,33 @@
-<% @product.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, transformation: [{crop: "crop", width: 900, height:1400},{width: 200, height: 400, gravity: 'auto', crop: "fill", quality: 100}] %>
-<% end %>
+<%= render "shared/navbar" %>
+
+<div class="container">
+  <div class="row">
+    <div class="user-presentation", style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(128,128,128,0.1)), 
+                  <%# url('<%= cl_image_path @product.first.photo.key, transformation: [{crop: "crop", width: 900, height:1400},{width: 200, height: 400, gravity: 'auto', crop: "fill", quality: 100}] %>')"> %>
+      <div class="avatar-large">
+        <%# <%= cl_image_path @product.user.photo.key %> 
+      </div>
+      <div class="name-rating">
+        <%= @product.user.first_name %> 
+        <%# <%= @product.user.rating %>       
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <i class="fas fa-play"></i>
+    </div>
+    <div class="col-8">
+      <% @product.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, transformation: [{crop: "crop", width: 900, height:1400},{width: 200, height: 400, gravity: 'auto', crop: "fill", quality: 100}] %>
+      <% end %>
+    </div>
+    <div class="col-2">
+      <i class="fas fa-play"></i>
+    </div>
+  </div>
+
+  <%= @product.name %>
+
+</div>
