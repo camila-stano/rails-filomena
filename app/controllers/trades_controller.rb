@@ -1,6 +1,6 @@
 class TradesController < ApplicationController
   before_action :set_trade, only: %i[show edit update]
-  before_action :validate_current_user
+  # before_action :validate_current_user
 
   def index
   end
@@ -38,12 +38,12 @@ class TradesController < ApplicationController
 
   private
 
-  def validate_current_user
-    if @trade.user != current_user
-      redirect_to clothes_path, alert: "Você só pode ver as suas transações!"
-      return
-    end 
-  end
+  # def validate_current_user
+  #   if @trade.user != current_user
+  #     redirect_to clothes_path, alert: "Você só pode ver as suas transações!"
+  #     return
+  #   end 
+  # end
 
   def set_trade
     @trade = Trade.find(params[:id])

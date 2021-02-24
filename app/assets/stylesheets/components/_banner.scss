@@ -1,7 +1,16 @@
 .arrow {
-  height: 500px;
+  height: 450px;
   width: 100%;
 }
+
+.arrow i {
+  color: $filo-gold;
+}
+
+.arrow i:hover {
+  color: $filo-blue;
+}
+
 .banner-user {
   margin: 20px;
   padding: 3px;
@@ -13,4 +22,8 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(211, 211, 211);
+}
+
+.banner-clothes {
+  height: 450px;
 }
