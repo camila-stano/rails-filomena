@@ -1,0 +1,23 @@
+<%= render "shared/navbar" %>
+
+<div class="profile-info">
+<h1 class= 'profile-title'>Armário do <%= @profile.first_name %> <%= @profile.last_name %></h1>
+</div>
+
+<% if current_user %>
+  <%= link_to 'Adicionar um novo produto', new_product_path, class: 'btn btn-primary add-product' %>
+<% end%>
+
+<div class="info-available">
+</div>
+<div class="info-not-available"></div>
+
+<div class="product-grid">
+  <% @profile.products.each do |product|  %>
+    <%product.photos.each do |photo|%>
+     <%= cl_image_tag(photo) %>
+    <%end%>
+  <%end%>
+</div>
+
+<%# link_to review %>
