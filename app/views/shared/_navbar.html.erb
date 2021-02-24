@@ -1,5 +1,5 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <h2><%= link_to "Filomenna", class: "navbar-brand d-flex align-items-center" %></h2>
+<div class="navbar navbar-expand-sm navbar-lewagon">
+  <h2><%= link_to "Filomenna", products_path, class: "navbar-brand d-flex align-items-center nav-logo" %></h2>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,16 +9,18 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item d-flex align-items-center">
-          <%= link_to "Seu armário", "#", class: "nav-messages" %>
-        </li>
-        <li class="nav-item d-flex align-items-center">
-          <%= link_to "Mensagens", "#", class: "nav-messages" %>
-        </li>
+          <li class="nav-item d-flex align-items-center">
+            <div class="nav-item d-flex align-items-center name-index"><%= current_user.first_name %></p>
+          </li>
+
+
         <li class="nav-item dropdown d-flex align-items-center">
           <%= render "shared/avatar", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Gerenciar sua conta", "#", class: "dropdown-item" %>
+            <%= link_to "Mensagens", "#", class: "dropdown-item" %>
+            <%= link_to "Criar roupa", new_product_path, class: "dropdown-item" %>
+            <%= link_to "Meu armário", "#", class: "dropdown-item" %>
+            <%= link_to "Gerenciar conta", "#", class: "dropdown-item" %>
             <%= link_to "Termos de uso", "#", class: "dropdown-item" %>
             <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
