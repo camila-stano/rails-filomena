@@ -1,11 +1,11 @@
+<%= render "shared/navbar" %>
+
 <div class="container container-forms form-group">
   <h2 class = 'mb-3'>Faça sua proposta!</h2>
 
     <%= simple_form_for [@product, @trade] do |f| %>
     <%= f.input :content,
                 label: false %>
+    <%= f.submit "Enviar e ir para minhas trades", class: 'btn btn-warning rounded' %>
   <% end %>
-  <%= link_to "Enviar", products_path, class: 'btn btn-warning rounded' %>
-  <%= link_to "Enviar e ir para minhas trades", trades_path(current_user), class: 'btn btn-warning rounded' %>
-
 </div> 

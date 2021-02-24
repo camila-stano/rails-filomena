@@ -1,8 +1,9 @@
 class TradesController < ApplicationController
-  before_action :set_product, only: %i[show new edit update]
+  before_action :set_product, only: %i[show new create edit update]
   # before_action :validate_current_user
 
   def index
+    # @trades = Trade.all
   end
 
   def new
@@ -16,7 +17,7 @@ class TradesController < ApplicationController
     @trade.product = @product
     #adicionar addEventListiner para o botão de super like e fazer um @trade.super_like = true
     if @trade.save
-      redirect_to @trade
+      redirect_to trades_path
     else
       render 'new'
     end

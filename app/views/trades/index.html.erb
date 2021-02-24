@@ -1,2 +1,10 @@
-<h1>Trades#index</h1>
-<p>Find me in app/views/trades/index.html.erb</p>
+<%= render "shared/navbar" %>
+
+<div class="container">
+  <% current_user.trades.each do |trade| %>
+    <p><%= trade.product.name %></p>
+    <p><%= trade.content %></p>
+    <p><%= trade.product.user.first_name %></p>
+    <p>************************************</p>
+  <% end %>
+</div>
