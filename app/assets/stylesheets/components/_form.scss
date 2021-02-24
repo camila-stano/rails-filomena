@@ -9,7 +9,8 @@ $space-between-buttons: 15px;
 }
 
 .btn-link {
-  color: $filo-gold;
+  background-color: $filo-gold;
+  color: $filo-white;
   width: 100%;
   font-size: $font-size-link;
   margin-top: $space-between-buttons;
@@ -18,6 +19,7 @@ $space-between-buttons: 15px;
 .btn-main {
   width: 100%;
   background-color: $filo-tifany;
+  color: $filo-white;
   border: none;
 }
 
