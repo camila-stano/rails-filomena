@@ -1,7 +1,7 @@
 <%= render "shared/navbar" %>
 <div class="container mt-5">
   <div class="row d-flex justify-content-center">
-    <% @products.each do |product| %>
+    <% @availables.each do |product| %>
       <div class="col-12 my-3">
         <%= link_to product_path(product) do %>
           <% if product.photos.present? %>
