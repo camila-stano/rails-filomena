@@ -11,9 +11,10 @@
     <div class="col-12">
       <% current_user.trades.each do |trade| %>
         <div class="card-trade">
-        <p> Peça: <%= trade.product.name %></p>
-        <p> Mensagem: <%= trade.content %></p>
-        <p> Negociando com <%= trade.product.user.first_name %></p>
+          <p class="text-filo"> <strong> Negociando com <%= trade.product.user.first_name %></strong> | <%= link_to "ver perfil", profile_path(trade.product.user)%> </p>
+          <p> Peça: <%= trade.product.name %></p>
+          <p> Mensagem: <%= trade.content %></p>
+          <button class="btn btn-primary btn-sm"> Arquivar negociação </button>          
         </div>
       <% end %>
     </div>
