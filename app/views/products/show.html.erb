@@ -5,8 +5,9 @@
 
   <div class ="row d-flex justify-content-center pb-3 m-3">
     <h2 class="title-filo"><%= @product.name %> </h2>
-    
-    <h2 class="tag-price d-flex align-items-center">$<%= @product.price %></h2>
+    <% if @product.price.present? %>
+      <h2 class="tag-price d-flex align-items-center">$<%= @product.price %></h2>
+    <% end %>
   </div>
  
   <div id="carousel-filo" class="carousel slide" data-ride="carousel">
@@ -41,7 +42,7 @@
     </a>
   </div>
 
-  <div class="row mt-3">
+  <div class="row mt-5">
     <div class="col-2">
       <% if @product.product_type.present? %>
         <h5 class="tag"><%= @product.product_type %></h5>
@@ -76,11 +77,13 @@
       <% end %>
     </div>
 
-    <div class="row card-description">
+    <div class="row card-description mt-4">
       <div class="col-12">
         <%= @product.description %>
       </div>
     </div>
-
+  <br>
+  <br>
+  <br>
   </div>
 </div>
