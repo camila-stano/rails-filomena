@@ -3,8 +3,10 @@
 
 <div class="container"> 
 
-  <div class ="d-flex justify-content-center pb-3">
-    <h2 class="title-filo"><%= @product.name %></h2>
+  <div class ="row d-flex justify-content-center pb-3 m-3">
+    <h2 class="title-filo"><%= @product.name %> </h2>
+    
+    <h2 class="tag-price d-flex align-items-center">$<%= @product.price %></h2>
   </div>
  
   <div id="carousel-filo" class="carousel slide" data-ride="carousel">
@@ -59,7 +61,7 @@
     </div>
     
     <div class="col-2">
-      <% if @product.buyable == false %>
+      <% if @product.buyable == true %>
         <h5 class="tag"> VENDA!</h5>
       <% else %>
         <h5 class="tag-indis"> VENDA!</h5>
