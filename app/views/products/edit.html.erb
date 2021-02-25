@@ -12,9 +12,11 @@
     <%= f.input :size, label:'Qual o tamanho?'%>
     <%= f.input :description, label:'Descreva a sua roupa'%>
 
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
-    <%= f.submit "essa vai voltar pro armário!", product_path(@product), method: :delete, 
-                 data: { confirm: 'Certeza que gostaria de deletar essa peça?'}, class: "btn btn-primary"%>
+    <%= f.submit "Peça pronta para voltar para o meu armário!", class: "btn btn-success btn-create"%>
   <% end %>
+    <%= link_to "Quero tirar essa peça do meu armário!", product_path,
+                method: :delete, data: { confirm: 'Certeza que gostaria de deletar permanentemente essa peça?'},
+                class: "btn btn-warning rounded btn-create mt-3" %>
 </div>
