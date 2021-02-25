@@ -1,8 +1,16 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: %i[show edit update rating]
+  before_action :set_profile, only: %i[show edit update arquived]
 
   def show
-    rating
+    @gender = @profile.gender
+    if @gender == 'Mulher'
+      @gender_call = 'a'
+    elsif @gender == 'Homem'
+      @gender_call = 'o'
+    else
+      @gender_call = 'e'
+    end
+
   end
 
   def edit
@@ -17,18 +25,7 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def rating
-    if @profile.trades.present?
-      size = @profile.trades.size
-      all_ratings = 0
-      @profile.trades.each do |trade|
-        all_ratings += trade.review_rating
-      end
-      @rating = '⭐' * (all_ratings / size)
-
-    else
-      @rating = "Novo usuário, seja o primeiro a negociar com ele!"
-    end
+  def arquived
   end
 
   private

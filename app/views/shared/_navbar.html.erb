@@ -20,6 +20,7 @@
             <%= link_to "Mensagens", trades_path, class: "dropdown-item" %>
             <%= link_to "Criar roupa", new_product_path, class: "dropdown-item" %>
             <%= link_to "Meu armário", profile_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Peças arquivadas", arquived_profile_path(current_user), class: "dropdown-item" %>
             <%= link_to "Gerenciar conta", "#", class: "dropdown-item" %>
             <%= link_to "Termos de uso", "#", class: "dropdown-item" %>
             <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
