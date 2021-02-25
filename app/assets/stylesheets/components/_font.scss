@@ -2,9 +2,49 @@
   font-family: $filo-logo;
   color: $filo-gold;
   margin: 10px 5px;
+  line-height: 1em;
 }
 
 .text-filo {
   font-family: 'nunito';
   color: $gray;
+}
+
+.tag {
+  background-color: $filo-blue;
+  border-radius: 50px;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-weight: lighter;
+  font-size: 13px;
+  width: 150px;
+  height: 50;
+}
+
+.tag-indis {
+  background-color: grey;
+  border-radius: 50px;
+  text-align: center;
+  padding: 10px;
+  color: rgb(170, 170, 170);
+  font-weight: lighter;
+  font-size: 13px;
+  width: 150px;
+
+}
+
+.tag-price {
+  background-color: $filo-gold;
+  border-radius: 50px;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-weight: lighter;
+  font-size: 17px;
+  width: 150px;
+  height: 50;
+  justify-content: center;
+  align-items: center;
+  line-height: 1em;
 }

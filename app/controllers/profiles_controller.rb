@@ -10,6 +10,8 @@ class ProfilesController < ApplicationController
     else
       @gender_call = 'e'
     end
+
+    rating
   end
 
   def edit
@@ -25,6 +27,20 @@ class ProfilesController < ApplicationController
   end
 
   def arquived
+  end
+  
+  def rating
+    if @profile.trades.present?
+      size = @profile.trades.size
+      all_ratings = 0
+      @profile.trades.each do |trade|
+        all_ratings += trade.review_rating
+      end
+      @rating = '⭐' * (all_ratings / size)
+
+    else
+      @rating = "Novo usuário, seja o primeiro a negociar com ele!"
+    end
   end
 
   private

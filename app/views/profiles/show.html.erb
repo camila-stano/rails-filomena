@@ -1,22 +1,46 @@
 <%= render "shared/navbar" %>
-<%= render 'shared/banner-user' %>
+<div class="container">
 
-<div class="row d-flex mb-3">
-  <div class="profile-info d-inline-flex justify-content-between align-items-center col-12">
-    <div>
-      <h1 class= 'profile-title ml-4'>Armário d<%=@gender_call%> <%= @profile.first_name %> <%= @profile.last_name %></h1>
-    </div>
-    <div>
-      <% if current_user == @profile %>
-        <%= link_to 'Adicionar um novo produto', new_product_path, class: 'btn btn-primary add-product mr-4' %>
-      <% end%>
+  <div class="row"> 
+
+    <div class="banner-user", style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(128,128,128,0.1)), 
+                                     url('')"> 
+
+      <div class="col-9 text-center">
+        <div class="banner-armario">
+          <h1 class= 'profile-title'>Armário do <%= @profile.first_name %> <%= @profile.last_name %></h1>
+          <p class='profile-description'><%= @rating %></p>
+        </div>
+      </div>
+    
+      <div class="col-3 d-flex justify-content-center">
+        <div class="avatar-large">
+          <% if @profile.photo.present? %>
+            <%= cl_image_tag @profile.photo.key, class: "avatar-large" %>
+          <% else %>
+            <%= image_tag "https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg", class: "avatar-large" %>
+          <% end %>
+        </div>  
+      </div>
+
+    </div> 
+  </div>
+
+  <div class="row d-flex mb-3">
+    <div class="profile-info d-inline-flex justify-content-between align-items-center col-12">
+      <div>
+        <h1 class= 'profile-title ml-4'>Armário d<%=@gender_call%> <%= @profile.first_name %> <%= @profile.last_name %></h1>
+      </div>
+      <div>
+        <% if current_user == @profile %>
+          <%= link_to 'Adicionar um novo produto', new_product_path, class: 'btn btn-primary add-product mr-4' %>
+        <% end%>
+      </div>
     </div>
   </div>
-</div>
 
 <div class="info-available"></div>
 <div class="info-not-available"></div>
-
 <div class="row d-flex">
   <% @profile.products.order('created_at DESC').each do |product|  %>
     <%next unless product.available%> 
@@ -37,3 +61,7 @@
 <br><br><br><br><br>
 
 <%# link_to review %>
+
+</div>
+
+<%= render "shared/footer" %>
