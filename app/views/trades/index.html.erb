@@ -1,10 +1,21 @@
 <%= render "shared/navbar" %>
 
-<div class="container">
-  <% current_user.trades.each do |trade| %>
-    <p><%= trade.product.name %></p>
-    <p><%= trade.content %></p>
-    <p><%= trade.product.user.first_name %></p>
-    <p>************************************</p>
-  <% end %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h2 class = 'title-filo'> Suas negociações </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <% current_user.trades.each do |trade| %>
+        <div class="card-trade">
+        <p> Peça: <%= trade.product.name %></p>
+        <p> Mensagem: <%= trade.content %></p>
+        <p> Negociando com <%= trade.product.user.first_name %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
