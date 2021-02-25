@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="row"> 
-
+<%# BANNER --------------------------------------------------------------------------------------------------------- %>
     <div class="banner-user", style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(128,128,128,0.1)), 
                                      url('')"> 
 
@@ -27,6 +27,7 @@
     </div> 
   </div>
 
+<%# TITLE --------------------------------------------------------------------------------------------------------- %>
   <div class ="row d-flex justify-content-center pb-3 m-3">
     <h2 class="title-filo"><%= @product.name %> </h2>
     <% if @product.price.present? %>
@@ -34,6 +35,7 @@
     <% end %>
   </div>
  
+<%# CAROUSEL --------------------------------------------------------------------------------------------------------- %>
   <div id="carousel-filo" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">  
       <div class="carousel-item active ">
@@ -41,19 +43,14 @@
           <%= cl_image_tag(@product.photos[0].key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ') %>
         </div>
       </div>
-      <% if @product.photos[1].present? %>
-        <div class="carousel-item">
-          <div class="d-flex justify-content-center">
-           <%= cl_image_tag(@product.photos[1].key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ')  %>
-          </div>
-        </div> 
-      <% end %>
-      <% if @product.photos[2].present? %>
-        <div class="carousel-item">
-          <div class="d-flex justify-content-center">
-           <%= cl_image_tag(@product.photos[2].key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ')  %>
-          </div>
-        </div>
+      <% @product.photos.each do |photo| %>
+        <% if photo != @product.photos[0] %>
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center">
+              <%= cl_image_tag(photo.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ')  %>
+            </div>
+          </div> 
+        <% end %>
       <% end %>
     </div>
     <a class="carousel-control-prev" href="#carousel-filo" role="button" data-slide="prev">
@@ -66,6 +63,7 @@
     </a>
   </div>
 
+<%# TAGS --------------------------------------------------------------------------------------------------------- %>
   <div class="row mt-5">
     <div class="col-2">
       <% if @product.product_type.present? %>
@@ -101,13 +99,14 @@
       <% end %>
     </div>
 
+<%# DESCRIPTION --------------------------------------------------------------------------------------------------------- %>
     <div class="row card-description mt-4">
       <div class="col-12">
         <%= @product.description %>
       </div>
     </div>
-
   </div>
 </div>
 
+<%# FOOTER --------------------------------------------------------------------------------------------------------- %>
 <%= render "shared/footer" %>
