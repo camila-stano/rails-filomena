@@ -8,3 +8,14 @@
   font-family: 'nunito';
   color: $gray;
 }
+
+.tag {
+  background-color: $filo-blue;
+  border-radius: 50px;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  font-weight: lighter;
+  font-size: 15px;
+  width: 150px;
+}
