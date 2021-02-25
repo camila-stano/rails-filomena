@@ -3,6 +3,7 @@
   <h2 class = 'my-3'>Edite o seu produto!</h2>
   
   <%= simple_form_for(@product) do |f| %>
+    <%= f.input :available, label: 'Mostrar a roupa no meu armário'%>
     <%= f.input :name, label: 'Nome do seu anúncio'%>
     <%= f.input :buyable, label:'A roupa está a venda?'%>
     <%= f.input :exchangeable, label:'Aceita troca nessa roupa?'%>
@@ -14,9 +15,9 @@
 
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
-    <%= f.submit "Peça pronta para voltar para o meu armário!", class: "btn btn-success btn-create"%>
+    <%= f.submit "Peça Atualizada!", class: "btn btn-success btn-create"%>
   <% end %>
-    <%= link_to "Quero tirar essa peça do meu armário!", product_path,
+    <%= link_to "Quero deletar do meu armário!", product_path,
                 method: :delete, data: { confirm: 'Certeza que gostaria de deletar permanentemente essa peça?'},
                 class: "btn btn-warning rounded btn-create mt-3" %>
 </div>

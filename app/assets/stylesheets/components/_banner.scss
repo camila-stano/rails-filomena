@@ -89,7 +89,7 @@
 
   .name-rating p {
     font-size: 15px;
-    padding-left: 10px;
+    padding-left: 10px; 
   }
 }
 
@@ -161,3 +161,23 @@
   font-size: 18px;
 }
 
+.carousel-control-prev {
+  color: $filo-gold;
+  font-size: 40px;
+  opacity: 1;
+}
+
+.carousel-control-prev i:hover {
+color: $filo-blue;
+}
+
+
+.carousel-control-next {
+  color: $filo-gold;
+  font-size: 40px;
+  opacity: 1;
+}
+
+.carousel-control-next i:hover {
+color: $filo-blue;
+}

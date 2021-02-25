@@ -6,6 +6,6 @@
     <%= simple_form_for [@product, @trade] do |f| %>
     <%= f.input :content,
                 label: false %>
-    <%= f.submit "Enviar e ir para minhas trades", class: 'btn btn-warning rounded' %>
+    <%= f.submit "Enviar e ir para minhas trades", trades_path, class: 'btn btn-warning rounded' %>
   <% end %>
 </div> 
