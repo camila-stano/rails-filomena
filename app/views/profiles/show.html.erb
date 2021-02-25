@@ -4,7 +4,7 @@
 <div class="row d-flex mb-3">
   <div class="profile-info d-inline-flex justify-content-between align-items-center col-12">
     <div>
-      <h1 class= 'profile-title ml-4'>Armário do <%= @profile.first_name %> <%= @profile.last_name %></h1>
+      <h1 class= 'profile-title ml-4'>Armário d<%=@gender_call%> <%= @profile.first_name %> <%= @profile.last_name %></h1>
     </div>
     <div>
       <% if current_user == @profile %>
@@ -19,18 +19,19 @@
 
 <div class="row d-flex">
   <% @profile.products.order('created_at DESC').each do |product|  %>
-       
-      <div class="d-flex img-profile col-4">
-        <%= cl_image_tag(product.photos.first.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ') %>
-        <div class=" btn-edit-delete-container"> 
-          <%if current_user == product.user%>
-            <div class="edit-delete-btn">
-              <%=link_to 'Edit', edit_product_path(product), class: 'btn btn-light btn-img-profile' %>
-              <%=link_to 'Delete', product_path(product), method: :delete, class: 'btn btn-danger btn-img-profile mr-2' %>
-            </div>
-          <%end%>
-        </div>
+    <%next unless product.available%> 
+    <div class="d-flex img-profile col-4">
+      <%= cl_image_tag(product.photos.first.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ') %>
+      <div class=" btn-edit-delete-container"> 
+        <%if current_user == product.user%>
+          <div class="edit-delete-btn">
+            <%=link_to 'Editar', edit_product_path(product), class: 'btn btn-edit btn-img-profile' %>
+            <%=link_to 'Arquivar', arquive_product_path(product), method: :patch, class: 'btn btn-arquive btn-img-profile'%>
+            <%=link_to 'Deletar', product_path(product), method: :delete, class: 'btn btn-delete btn-img-profile mr-2' %>
+          </div>
+        <%end%>
       </div>
+    </div>
   <%end%>
 </div>
 <br><br><br><br><br>

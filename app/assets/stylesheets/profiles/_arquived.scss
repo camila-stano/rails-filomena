@@ -1,0 +1,36 @@
+.img-arquived{
+  opacity:0.70;
+}
+.img-arquived:hover, .btn-img-profile-arquived:hover .img-arquived{
+  opacity:0.85;
+}
+
+.btn-img-profile-arquived{
+  font-size: 8px;
+  padding: 0.25rem 0.25rem;
+}
+.btn-arquived-container{
+  position: absolute;
+  right: 1.3rem;
+  bottom: 0.5rem;
+}
+.img-profile .btn-arquived-container{
+  opacity: 0;
+}
+.img-profile:hover .btn-arquived-container{
+  opacity: 0.7;
+  transition: opacity .15s ease-in-out;
+}
+.btn-img-profile-arquived:hover{
+  background-color:rgb(240, 104, 26);
+  opacity: 1;
+}
+@media (max-width: 720px) {
+  .btn-img-profile-arquived{
+    font-size: 5px;
+    padding: 0.15rem 0.15rem;
+  }
+  .btn-arquived-container{
+    bottom: 0rem;
+  }
+}

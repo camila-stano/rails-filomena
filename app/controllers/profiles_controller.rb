@@ -1,7 +1,15 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: %i[show edit update]
+  before_action :set_profile, only: %i[show edit update arquived]
 
   def show
+    @gender = @profile.gender
+    if @gender == 'Mulher'
+      @gender_call = 'a'
+    elsif @gender == 'Homem'
+      @gender_call = 'o'
+    else
+      @gender_call = 'e'
+    end
   end
 
   def edit
@@ -14,6 +22,9 @@ class ProfilesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def arquived
   end
 
   private
