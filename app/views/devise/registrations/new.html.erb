@@ -28,6 +28,10 @@
       <%= f.input :last_name,
                   placeholder: 'Sobrenome',
                   label: false %>
+      <%= f.input :gender,
+                  placeholder: 'Como podemos nos referir a você?',
+                  collection:User::GENDER,
+                  label: false %>
       <%= f.input :phone,
                   placeholder: 'Telefone',
                   label: false %>

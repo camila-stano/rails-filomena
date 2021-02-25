@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :trades
   has_one_attached :photo
 
+  GENDER = ['Mulher', 'Homem', 'Prefiro não me identificar']
   validates :first_name, presence: true
 end
