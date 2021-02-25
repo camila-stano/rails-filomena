@@ -1,9 +1,11 @@
 .profile-title{
   font-size: 25px;
 }
+
 .product-grid{
   display: grid;
 }
+
 .square-image{
   width: 300px;
   height: 300px;
@@ -12,21 +14,26 @@
   background-position: center;
   background-size: cover;
 }
+
 .btn-img-profile{
   font-size: 8px;
   padding: 0.25rem 0.25rem;
 }
+
 .img-profile .btn-edit-delete-container{
   opacity: 0;
 }
+
 .img-profile:hover .btn-edit-delete-container{
   opacity: 1;
   transition: opacity .15s ease-in-out;
 }
+
 .img-profile{
   position: relative;
   transition-delay: 2s;
 }
+
 .btn-edit-delete-container{
   position: absolute;
   right: 0.6rem;
