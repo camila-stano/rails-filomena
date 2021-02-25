@@ -41,19 +41,14 @@
           <%= cl_image_tag(@product.photos[0].key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ') %>
         </div>
       </div>
-      <% if @product.photos[1].present? %>
-        <div class="carousel-item">
-          <div class="d-flex justify-content-center">
-           <%= cl_image_tag(@product.photos[1].key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ')  %>
-          </div>
-        </div> 
-      <% end %>
-      <% if @product.photos[2].present? %>
-        <div class="carousel-item">
-          <div class="d-flex justify-content-center">
-           <%= cl_image_tag(@product.photos[2].key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ')  %>
-          </div>
-        </div>
+      <% @product.photos.each do |photo| %>
+        <% if photo != @product.photos[0] %>
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center">
+              <%= cl_image_tag(photo.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ')  %>
+            </div>
+          </div> 
+        <% end %>
       <% end %>
     </div>
     <a class="carousel-control-prev" href="#carousel-filo" role="button" data-slide="prev">
@@ -111,3 +106,18 @@
 </div>
 
 <%= render "shared/footer" %>
+
+        <%# <% if @product.photos[1].present? %>
+          <%# <div class="carousel-item"> %>
+            <%# <div class="d-flex justify-content-center">
+            <%= cl_image_tag(@product.photos[1].key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ')  %>
+            <%# </div>
+          </div> 
+        <% end %>
+        <%# <% if @product.photos[2].present? %>
+          <%# <div class="carousel-item">
+            <div class="d-flex justify-content-center">
+            <%= cl_image_tag(@product.photos[2].key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ')  %>
+            <%# </div>
+          </div>
+        <% end %> %> %> %> %> %> %>
