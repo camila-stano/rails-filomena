@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.available = true
     @product.user = current_user
 
     if @product.save
@@ -34,7 +35,7 @@ class ProductsController < ApplicationController
   def update
     @product.update(product_params)
     if @product.save
-      redirect_to @product, notice: "Editado com sucesso!"
+      redirect_to profile_path(current_user), notice: "Editado com sucesso!"
     else
       render :edit
     end
@@ -42,7 +43,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_path
+    redirect_to profile_path(current_user), notice: "Peça apagada com sucesso!"
   end
 
   private
@@ -60,6 +61,6 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :buyable, :exchangeable, :price, 
-                                   :category, :type, :size, :available, :description)
+                                   :category, :type, :size, :available, :description, photos: [])
   end
 end
