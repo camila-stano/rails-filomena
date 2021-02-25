@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.available = true
     @product.user = current_user
 
     if @product.save
@@ -60,6 +61,6 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :buyable, :exchangeable, :price, 
-                                   :category, :type, :size, :available, :description)
+                                   :category, :type, :size, :available, :description, photos: [])
   end
 end
