@@ -17,7 +17,7 @@ class TradesController < ApplicationController
     @trade.product = @product
     #adicionar addEventListiner para o botão de super like e fazer um @trade.super_like = true
     if @trade.save
-      redirect_to trades_path
+      redirect_to products_path, notice: "Mensagem enviada, agora é só aguardar!"
     else
       render 'new'
     end

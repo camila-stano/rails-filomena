@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
   def update
     @product.update(product_params)
     if @product.save
-      redirect_to @product, notice: "Editado com sucesso!"
+      redirect_to profile_path(current_user), notice: "Editado com sucesso!"
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_path
+    redirect_to profile_path(current_user), notice: "Peça apagada com sucesso!"
   end
 
   private

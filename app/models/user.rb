@@ -6,4 +6,6 @@ class User < ApplicationRecord
   has_many :products
   has_many :trades
   has_one_attached :photo
+
+  validates :first_name, presence: true
 end
