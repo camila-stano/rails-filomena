@@ -6,7 +6,11 @@
         <div class="avatar-large" style="background-image: url('https://avatars.githubusercontent.com/u/73120794?s=460&u=e1d1d4a29bf7f5de070ef5f48ef7b39618511f1f&v=4')">
         </div>
         <div class="name-rating">
-          <p> <%= @product.user.first_name %> ⭐⭐⭐⭐⭐ </p> 
+          <%if @product%>
+            <p> <%= @product.user.first_name %> ⭐⭐⭐⭐⭐ </p> 
+          <%else%>
+            <p> <%= @profile.first_name %> ⭐⭐⭐⭐⭐ </p> 
+          <%end%>
           <%#= @product.user.rating %>   
         </div> 
       </div>
