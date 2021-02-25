@@ -17,9 +17,9 @@
         <li class="nav-item dropdown d-flex align-items-center">
           <%= render "shared/avatar", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Mensagens", "#", class: "dropdown-item" %>
+            <%= link_to "Mensagens", trades_path, class: "dropdown-item" %>
             <%= link_to "Criar roupa", new_product_path, class: "dropdown-item" %>
-            <%= link_to "Meu armário", "#", class: "dropdown-item" %>
+            <%= link_to "Meu armário", profile_path(current_user), class: "dropdown-item" %>
             <%= link_to "Gerenciar conta", "#", class: "dropdown-item" %>
             <%= link_to "Termos de uso", "#", class: "dropdown-item" %>
             <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

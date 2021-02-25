@@ -1,17 +1,20 @@
- <%= simple_form_for(@product) do |f| %>
-  <%= f.input :name, label: 'Nome do seu anúncio'%>
-  <%= f.input :buyable, label:'A roupa está a venda?'%>
-  <%= f.input :exchangeable, label:'Aceita troca nessa roupa?'%>
-  <%= f.input :price, label:'Caso esteja à venda, qual o preço?'%>
-  <%= f.input :category, label:'Qual o estilo da sua roupa?'%>
-  <%= f.input :product_type, label:'Qual o tipo da sua roupa?'%>
-  <%= f.input :size, label:'Qual o tamanho?'%>
-  <%= f.input :description, label:'Descreva a sua roupa'%>
+<%= render "shared/navbar" %>
+<div class="container container-forms form-group">
+  <h2 class = 'my-3'>Edite o seu produto!</h2>
+  
+  <%= simple_form_for(@product) do |f| %>
+    <%= f.input :name, label: 'Nome do seu anúncio'%>
+    <%= f.input :buyable, label:'A roupa está a venda?'%>
+    <%= f.input :exchangeable, label:'Aceita troca nessa roupa?'%>
+    <%= f.input :price, label:'Caso esteja à venda, qual o preço?'%>
+    <%= f.input :category, label:'Qual o estilo da sua roupa?'%>
+    <%= f.input :product_type, label:'Qual o tipo da sua roupa?'%>
+    <%= f.input :size, label:'Qual o tamanho?'%>
+    <%= f.input :description, label:'Descreva a sua roupa'%>
 
-  <%= f.input :photo, as: :file %>
+    <%= f.input :photo, as: :file %>
 
-  <%= f.submit "Terminei!"%>
-<% end %>
-
-<%= link_to "essa vai voltar pro armário!", product_path(@product), method: :delete, 
-    data: { confirm: 'Certeza que gostaria de deletar essa peça?'}, class: "btn btn-primary"%>
+    <%= f.submit "essa vai voltar pro armário!", product_path(@product), method: :delete, 
+                 data: { confirm: 'Certeza que gostaria de deletar essa peça?'}, class: "btn btn-primary"%>
+  <% end %>
+</div>
