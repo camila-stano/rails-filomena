@@ -3,8 +3,8 @@
 
 <div class="container"> 
 
- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner border">  
+ <div id="carousel-filo" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">  
       <div class="carousel-item active ">
         <div class="d-flex justify-content-center">
           <%= cl_image_tag(@product.photos[0].key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ') %>
@@ -15,7 +15,7 @@
           <div class="d-flex justify-content-center">
            <%= cl_image_tag(@product.photos[1].key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ')  %>
           </div>
-        </div>
+        </div> 
       <% end %>
       <% if @product.photos[2].present? %>
         <div class="carousel-item">
@@ -25,12 +25,12 @@
         </div>
       <% end %>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <a class="carousel-control-prev" href="#carousel-filo" role="button" data-slide="prev">
+      <i class="fas fa-chevron-left"></i>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <a class="carousel-control-next" href="#carousel-filo" role="button" data-slide="next">
+      <i class="fas fa-chevron-right"></i>
       <span class="sr-only">Next</span>
     </a>
   </div>
