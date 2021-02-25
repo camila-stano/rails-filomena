@@ -11,7 +11,7 @@
     <%= f.input :product_type, collection:Product::PRODUCT_TYPE, label:'Qual o tipo da sua roupa?'%>
     <%= f.input :size, collection:Product::SIZE, label:'Qual o tamanho?'%>
     <%= f.input :description, label:'Descreva a sua roupa'%>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photos, as: :file, input_html: {multiple: true} %>
     <%= f.submit "Terminei", class: 'btn btn-success mt-3 btn-create' %>
 
   <% end %>

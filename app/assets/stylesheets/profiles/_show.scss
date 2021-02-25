@@ -16,3 +16,29 @@
   font-size: 8px;
   padding: 0.25rem 0.25rem;
 }
+.img-profile .btn-edit-delete-container{
+  opacity: 0;
+}
+.img-profile:hover .btn-edit-delete-container{
+  opacity: 1;
+  transition: opacity .15s ease-in-out;
+}
+.img-profile{
+  position: relative;
+  transition-delay: 2s;
+}
+.btn-edit-delete-container{
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.5rem;
+}
+
+@media (max-width: 720px) {
+  .btn-img-profile{
+    font-size: 5px;
+    padding: 0.15rem 0.15rem;
+  }
+  .btn-edit-delete-container{
+    bottom: 0rem;
+  }
+}
