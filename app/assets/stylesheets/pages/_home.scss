@@ -27,3 +27,24 @@ body {
   background-color: $filo-white;
 }
 
+.filomenna {
+  background-color: $filo-white;
+  color: $filo-blue;
+  font-family: $headers-font;
+}
+
+.filomenna h1 {
+  font-family: $filo-logo;
+  color: $filo-gold;
+}
+
+.filomenna h2 {
+  font-family: $filo-logo;
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: $filo-gold;
+}
+
+.filomenna p {
+  text-align: justify;
+}

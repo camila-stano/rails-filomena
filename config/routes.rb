@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   patch 'products/:id/arquive', to: 'products#arquive', as: :arquive_product
   patch 'products/:id/unarquive', to: 'products#unarquive', as: :unarquive_product
   get 'profiles/:id/arquive', to: 'profiles#arquived', as: :arquived_profile
+  get '/termosdeuso', to: 'pages#termos', as: :termos
 
   resources :products do
     resources :trades, only: [:new, :create]

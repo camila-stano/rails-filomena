@@ -10,6 +10,8 @@ class ProfilesController < ApplicationController
     else
       @gender_call = 'e'
     end
+
+    rating
   end
 
   def edit
@@ -32,7 +34,7 @@ class ProfilesController < ApplicationController
         next if trade.review_rating.nil? 
         @all_ratings += trade.review_rating
       end
-      @rating = @all_ratings == 0 ? "☆ ☆ ☆ ☆ ☆" : '★' * (@all_ratings / size)
+      @rating = @all_ratings == 0 || @all_ratings.nil? ? "☆ ☆ ☆ ☆ ☆" : '★' * (@all_ratings / size)
 
     else
       @rating = "☆ ☆ ☆ ☆ ☆"
