@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show edit update destroy]
+  before_action :set_product, only: %i[show edit update destroy arquive unarquive]
   before_action :validate_current_user, only: %i[edit update destroy]
 
   def index
@@ -43,6 +43,16 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     redirect_to profile_path(current_user), notice: "Peça apagada com sucesso!"
+  end
+
+  def arquive
+    @product.update(available: false)
+    redirect_to profile_path(current_user)
+  end
+
+  def unarquive
+    @product.update(available: true)
+    redirect_to profile_path(current_user)
   end
 
   private

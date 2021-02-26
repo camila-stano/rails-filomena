@@ -1,0 +1,31 @@
+<%= render "shared/navbar" %>
+<%= render 'shared/banner-user' %>
+
+<div class="row mb-3">
+  <div class="profile-info d-inline-flex justify-content-between align-items-center col-12">
+    <div>
+      <h1 class= 'profile-title ml-4'>PEÇAS ARQUIVADAS</h1>
+    </div>
+
+  </div>
+</div>
+
+<div class="info-available"></div>
+<div class="info-not-available"></div>
+
+<div class="row d-flex">
+  <% @profile.products.order('created_at DESC').each do |product|  %>
+    <%next if product.available%> 
+    <div class="d-flex img-profile col-4">
+      <%= cl_image_tag(product.photos.first.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid img-arquived') %>
+      <div class=" btn-arquived-container"> 
+        <%if current_user == product.user%>
+          <div class="edit-delete-btn">
+            <%=link_to 'Desarquivar', unarquive_product_path(product), method: :patch, class: 'btn btn-delete btn-img-profile-arquived'%>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  <%end%>
+</div>
+<br><br><br><br><br>
