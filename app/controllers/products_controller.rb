@@ -1,18 +1,14 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show edit update destroy arquive unarquive]
+  before_action :set_product, only: %i[show edit update destroy arquive unarquive product_remove]
   before_action :validate_current_user, only: %i[edit update destroy]
 
   def index
     #funciona colocar o shuffle antes para mostrar a ordem que renderizou primeiro? 
+    @product = Product.where(available: true).where.not(user: current_user).select { |product| ProductRemove.where(product: product, user: current_user).empty? }.sample
     
-    @products = Product.where(available: true).shuffle
-
-
-
     #a seta será exclusivamente para a direita, que implica em trocar de peça, randomicamente >> ok
     #um botão com o x tira aquela peça do array de possibilidades que o cliente poderá ver
     #um botão de coração inicia a transação 
-    
   end
 
   def show
@@ -59,6 +55,11 @@ class ProductsController < ApplicationController
   def unarquive
     @product.update(available: true)
     redirect_to profile_path(current_user)
+  end
+
+  def product_remove
+    ProductRemove.create(product: @product, user: current_user)
+    redirect_to products_path
   end
 
   private

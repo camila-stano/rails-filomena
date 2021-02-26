@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'profiles/:id/arquive', to: 'profiles#arquived', as: :arquived_profile
   get '/termosdeuso', to: 'pages#termos', as: :termos
 
+  post 'products/:id/remove', to: 'products#product_remove', as: :product_remove 
   resources :products do
     resources :trades, only: [:new, :create]
   end
