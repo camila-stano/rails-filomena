@@ -4,26 +4,33 @@
   <div class="row"> 
 
     <div class="banner-user", style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(128,128,128,0.1)), 
-                                     url('')"> 
-
-      <div class="col-9 text-center">
-        <div class="banner-armario">
-          <h1 class= 'profile-title'>Armário do <%= @profile.first_name %> <%= @profile.last_name %></h1>
+                                     url('<%= cl_image_path('https://res.cloudinary.com/dn6lyapiu/image/upload/v1614297855/19b4e287eb1ce10fd2ffc4c97d82612b_1_hgp1qt.gif')%>')"> 
+                                                                     
+      <div class="col-10 d-flex align-items-end", style="height: 100px; padding: 0px;">
+        <div class="banner-armario ">
+          <h1 class= 'profile-title'>Armário de <%= @profile.first_name %></h1>
           <p class='profile-description'><%= @rating %></p>
         </div>
       </div>
-    
-      <div class="col-3 d-flex justify-content-center">
-        <div class="avatar-large">
-          <% if @profile.photo.present? %>
-            <%= cl_image_tag @profile.photo.key, class: "avatar-large" %>
-          <% else %>
-            <%= image_tag "https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg", class: "avatar-large" %>
-          <% end %>
-        </div>  
-      </div>
+    </div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+      <div class="avatar-large">
+        <% if @profile.photo.present? %>
+          <%= cl_image_tag @profile.photo.key, class: "avatar-large" %>
+        <% else %>
+          <%= image_tag "https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg", class: "avatar-large" %>
+        <% end %>
+      </div>  
+    </div>
+     
+  </div>
 
-    </div> 
+  <div class="banner-ps">
+    <% if @all_ratings == 0 %>
+      <p><%= "* O usuário ainda não possui avaliações, seja o primeiro a negociar com ele!" %></p>
+    <% elsif @rating == "☆ ☆ ☆ ☆ ☆" %>
+      <p><%= "* O usuário ainda não possui avaliações, seja o primeiro a negociar com ele!" %></p>
+    <% end %>
   </div>
 
   <div class="row d-flex mb-3">

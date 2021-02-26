@@ -66,14 +66,13 @@
     margin: 20px;
     padding: 3px;
     border-radius: 20px;
-    width: 100vw;
-    height: 150px;
+    width: 65vw;
+    height: 200px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     background-color: rgb(211, 211, 211);
-    background-size: auto;
   }
 
   .name-rating {
@@ -151,14 +150,23 @@
 .banner-armario h1 {
   margin: 0px;
   font-family: $filo-logo;
-  color: $filo-blue;
+  color: $filo-white;
   font-size: 30px;
+  font-weight: bolder;
 }
 
 .banner-armario p {
   font-family: $headers-font;
-  margin: 0;
-  font-size: 18px;
+  color: $filo-white;
+  font-size: 32px;
+  margin-left: 20px;
+  margin-bottom: 0px;
+}
+
+.banner-ps {
+  font-size: 15px;
+  color: $filo-orange;
+  margin-left: 30px;
 }
 
 .carousel-control-prev {

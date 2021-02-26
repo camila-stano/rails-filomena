@@ -20,14 +20,15 @@ class ProfilesController < ApplicationController
   def rating
     if @profile.trades.present?
       size = @profile.trades.size
-      all_ratings = 0
+      @all_ratings = 0
       @profile.trades.each do |trade|
-        all_ratings += trade.review_rating
+        next if trade.review_rating.nil? 
+        @all_ratings += trade.review_rating
       end
-      @rating = '⭐' * (all_ratings / size)
+      @rating = @all_ratings == 0 ? "☆ ☆ ☆ ☆ ☆" : '★' * (@all_ratings / size)
 
     else
-      @rating = "Novo usuário, seja o primeiro a negociar com ele!"
+      @rating = "☆ ☆ ☆ ☆ ☆"
     end
   end
 
