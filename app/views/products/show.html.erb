@@ -72,26 +72,26 @@
   </div>
 
 <%# TAGS --------------------------------------------------------------------------------------------------------- %>
-  <div class="row mt-5">
-    <div class="col-2">
+  <div class="row d-flex justify-content-center m-5">
+    <div class="mx-3">
       <% if @product.product_type.present? %>
         <h5 class="tag"><%= @product.product_type %></h5>
       <% end %>
     </div>
 
-    <div class="col-2">
+    <div class="mx-3">
       <% if @product.category.present? %>
         <h5 class="tag"><%= @product.category %></h5>
       <% end %>
     </div>
 
-    <div class="col-2">
+    <div class="mx-3">
       <% if @product.size.present? %>
         <h5 class="tag"><%= @product.size %></h5>
       <% end %>
     </div>
     
-    <div class="col-2">
+    <div class="mx-3">
       <% if @product.buyable == true %>
         <h5 class="tag"> VENDA</h5>
       <% else %>
@@ -99,7 +99,7 @@
       <% end %>
     </div>
 
-    <div class="col-2">
+    <div class="mx-3">
       <% if @product.exchangeable == true %>
         <h5 class="tag"> TROCA </h5>
       <% else %>
