@@ -7,6 +7,7 @@
     </div>
   </div>
 
+<% if current_user.trades.present? %>
   <div class="row">
     <div class="col-12">
       <% current_user.trades.each do |trade| %>
@@ -29,6 +30,14 @@
       </div>
     </div>
   <% end %>
+  <%else%>
+    <div class="dont-have-trades-title-btn mt-5">
+      <div class="dont-have-trades">
+        <h3>Você ainda não possui mensagens!!</h3>  
+        <%= link_to 'Continue olhando as roupas', products_path, class: 'btn btn-primary' %>
+      </div>
+    </div>    
+  <%end%>
 </div>
 
 
