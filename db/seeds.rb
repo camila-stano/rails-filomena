@@ -23,11 +23,12 @@ puts 'Creating User!'
 puts '-----------------------------'
 
 
-category = %w[casual party street]
-type = %w[shorts tshirt dress]
-size = %w[PP P M G GG XGG 38 40 42 44 46 48 50 52 54 56 58 60]
+category = %w[ACESSÓRIOS BOHO CASUAL CLÁSSICO ESPORTIVA FESTA FORMAL JEANS SOCIAL]
+type = %w[ACESSÓRIOS BERMUDA BLUSA CALÇA CAMISA CAMISETA CARDIGAN KIMONO JAQUETA MINI-SAIA PANTACOURT REGATA SAIA-LONGA SAIA-MIDI SAPATOS SHORTS T-SHIRT VESTIDO]
+size = %w[PP P M G GG XGG 38 40 42 44 46 48 50 52 54 56 58 60 62 64]
 
-10.times do 
+5.times do 
+  file = URI.open('https://source.unsplash.com/featured/?perfil')
   user = User.create!(
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
@@ -38,6 +39,7 @@ size = %w[PP P M G GG XGG 38 40 42 44 46 48 50 52 54 56 58 60]
     bday: Faker::Date.birthday(min_age: 18, max_age: 100),
     password: "123456789ABC"
   )
+  user.photo.attach(io: file, filename: 'photo.png', content_type: 'image/png')
   puts "The user #{user.id} created"
   puts '-----------------------------'
   puts "Uploading some products to #{user.first_name}..."
@@ -46,7 +48,7 @@ size = %w[PP P M G GG XGG 38 40 42 44 46 48 50 52 54 56 58 60]
  
 
   3.times do 
-    file = URI.open('https://source.unsplash.com/featured/?jeans,%20clothes,looks')
+    file = URI.open('https://source.unsplash.com/featured/?jeans,roupas')
     product = Product.create!(
       name: Faker::Color.color_name,
       buyable: [true, false].sample,
