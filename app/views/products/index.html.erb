@@ -4,10 +4,12 @@
     
     <div class="col-2 my-3">
       <div class='d-flex align-items-center justify-content-end arrow'>
+      <% if %>
         <%= link_to products_path do %>
           <i class="fas fa-times-circle"></i>
         <% end %>
       </div>
+      <% return @remove = true %>
     </div>
 
     <div class="col-8 my-3 ">

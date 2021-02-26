@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :user
   has_many :trades
+  has_many :product_removes
   has_many_attached :photos
 
   CATEGORIES = %w[ACESSÓRIOS BOHO CASUAL CLÁSSICO ESPORTIVA FESTA FORMAL JEANS PRAIA SOCIAL]
