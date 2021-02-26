@@ -1,9 +1,12 @@
 class Product < ApplicationRecord
   belongs_to :user
   has_many :trades
+  has_many :product_removes
   has_many_attached :photos
 
   CATEGORIES = %w[ACESSÓRIOS BOHO CASUAL CLÁSSICO ESPORTIVA FESTA FORMAL JEANS PRAIA SOCIAL]
   PRODUCT_TYPE = %w[ACESSÓRIOS BERMUDA BIQUINI BLUSA CALÇA CAMISA CAMISETA CARDIGAN KIMONO JAQUETA MINI-SAIA PANTACOURT REGATA SAIA-LONGA SAIA-MIDI SAPATOS SHORTS T-SHIRT VESTIDO]
   SIZE = %w[PP P M G GG XGG 38 40 42 44 46 48 50 52 54 56 58 60]
+
+  validates :photos, presence: true
 end

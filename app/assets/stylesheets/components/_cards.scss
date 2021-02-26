@@ -16,17 +16,32 @@
   margin-bottom: 5px;
   padding: 20px;
   border-radius: 5px;
-  width: 80vw;
-  height: 200px;
+  width: 70vw;
+  height: 180px;
   // display: flex;
   // flex-direction: row;
   justify-content: center;
   align-items: center;
   background-color: rgb(211, 211, 211);
+  font-famyly: $headers-font;
+}
+
+.card-trade-receb {
+margin-bottom: 5px;
+padding: 20px;
+border-radius: 5px;
+justify-content: right;
+width: 70vw;
+height: 180px;
+align-items: center;
+background-color: $filo-blue;
+color: $filo-white;
+margin-left: 70px;
+font-family: $headers-font;
 }
 
 .card-description {
-  width: 80vw;
+  width: 70vw;
   height: 150px;
   background-color: rgb(231, 229, 229);
   margin: 10px 5%;
@@ -39,4 +54,20 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.text-filo-white {
+  color: $filo-white;
+  font-size: 18px;
+  
+}
+
+.text-filo {
+  font-family: 'nunito';
+  color: $gray;
+  font-size: 18px;
+}
+
+.text-filo-gray {
+  color: $filo-light;
 }
