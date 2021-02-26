@@ -10,7 +10,6 @@ class ProfilesController < ApplicationController
     else
       @gender_call = 'e'
     end
-
   end
 
   def edit
@@ -38,6 +37,8 @@ class ProfilesController < ApplicationController
     else
       @rating = "☆ ☆ ☆ ☆ ☆"
     end
+  end
+  
   def arquived
   end
 

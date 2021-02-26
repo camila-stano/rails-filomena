@@ -1,31 +1,67 @@
 <%= render "shared/navbar" %>
-<%= render 'shared/banner-user' %>
+<div class="container">
 
-<div class="row mb-3">
-  <div class="profile-info d-inline-flex justify-content-between align-items-center col-12">
-    <div>
-      <h1 class= 'profile-title ml-4'>PEÇAS ARQUIVADAS</h1>
-    </div>
+<%#-------BANNER----------------------------------------------------------------------------------------------------%>
 
-  </div>
-</div>
+  <div class="row"> 
 
-<div class="info-available"></div>
-<div class="info-not-available"></div>
-
-<div class="row d-flex">
-  <% @profile.products.order('created_at DESC').each do |product|  %>
-    <%next if product.available%> 
-    <div class="d-flex img-profile col-4">
-      <%= cl_image_tag(product.photos.first.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid img-arquived') %>
-      <div class=" btn-arquived-container"> 
-        <%if current_user == product.user%>
-          <div class="edit-delete-btn">
-            <%=link_to 'Desarquivar', unarquive_product_path(product), method: :patch, class: 'btn btn-delete btn-img-profile-arquived'%>
-          </div>
-        <%end%>
+    <div class="banner-user", style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(128,128,128,0.1)), 
+                                    url('<%= cl_image_path('https://res.cloudinary.com/dn6lyapiu/image/upload/v1614297855/19b4e287eb1ce10fd2ffc4c97d82612b_1_hgp1qt.gif')%>')"> 
+                                                                    
+      <div class="col-10 d-flex align-items-end", style="height: 100px; padding: 0px;">
+        <div class="banner-armario ">
+          <h1 class= 'profile-title'>Peças arquivadas</h1>
+          <p class='profile-description'><%= @rating %></p>
+        </div>
       </div>
     </div>
-  <%end%>
-</div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+      <div class="avatar-large">
+        <% if @profile.photo.present? %>
+          <%= cl_image_tag @profile.photo.key, class: "avatar-large" %>
+        <% else %>
+          <%= image_tag "https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg", class: "avatar-large" %>
+        <% end %>
+      </div>  
+    </div>
+      
+  </div>
+
+  <div class="banner-ps">
+    <% if @all_ratings == 0 %>
+      <p><%= "* O usuário ainda não possui avaliações, seja o primeiro a negociar com ele!" %></p>
+    <% elsif @rating == "☆ ☆ ☆ ☆ ☆" %>
+      <p><%= "* O usuário ainda não possui avaliações, seja o primeiro a negociar com ele!" %></p>
+    <% else %>
+      <%=  %>
+    <% end %>
+  </div>
+
+<%#-------BANNER----------------------------------------------------------------------------------------------------%>
+<%#-------FOTOS ARQUIVADAS------------------------------------------------------------------------------------------%>
+  
+  <div class="info-available"></div>
+  <div class="info-not-available"></div>
+
+  <div class="row d-flex">
+    <% @profile.products.order('created_at DESC').each do |product|  %>
+      <%next if product.available%> 
+      <div class="d-flex img-profile col-4">
+        <%= cl_image_tag(product.photos.first.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid img-arquived') %>
+        <div class=" btn-arquived-container"> 
+          <%if current_user == product.user%>
+            <div class="edit-delete-btn">
+              <%=link_to 'Desarquivar', unarquive_product_path(product), method: :patch, class: 'btn btn-delete btn-img-profile-arquived'%>
+            </div>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+  </div>
+<%#-------FOTOS ARQUIVADAS------------------------------------------------------------------------------------------%>
+
 <br><br><br><br><br>
+</div>
+<footer>
+  <%= render "shared/footer" %>
+</footer>
