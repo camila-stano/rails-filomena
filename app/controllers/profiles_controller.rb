@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: %i[show edit update arquived]
+  before_action :set_profile, only: %i[show edit update arquived any_available?]
 
   def show
     @gender = @profile.gender
@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
     end
 
     rating
+    any_available?
   end
 
   def edit
@@ -42,11 +43,35 @@ class ProfilesController < ApplicationController
   end
   
   def arquived
+    any_arquived?
   end
 
+  
   private
-
+  
   def set_profile
     @profile = User.find(params[:id])
+  end
+
+  def any_available?
+    @available = false
+    @profile.products.each do |product|
+      if product.available == true
+        @available = true
+        break
+      end
+    end
+    @available
+  end
+
+  def any_arquived?
+    @arquived = false
+    current_user.products.each do |product|
+      if product.available == false
+        @arquived = true
+        break
+      end
+    end
+    @arquived
   end
 end
