@@ -1,10 +1,10 @@
 <%= render "shared/navbar" %>
 <div class="container mt-3">
   <div class="row d-flex justify-content-center ">
-    
-    <div class="col-2 my-3">
+    <% unless @product.nil? %>
+     <div class="col-2 my-3">
       <div class='d-flex align-items-center justify-content-end arrow'>
-        <%= link_to products_path do %>
+        <%= link_to product_remove_path(@product), method: :post do %>
           <i class="fas fa-times-circle"></i>
         <% end %>
       </div>
@@ -12,12 +12,11 @@
 
     <div class="col-8 my-3 ">
       <div class="banner-clothes">
-        <% product = @products.first %>
-        <%= link_to product_path(product) do %>
-          <% if product.photos.present? %>
+        <%= link_to product_path(@product) do %>
+          <% if @product.photos.present? %>
             <div class="card-category py-3"
                 style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(51,51,51,0.1)), 
-                url('<%= cl_image_path product.photos.first.key %>')">              
+                url('<%= cl_image_path @product.photos.first.key %>')">              
           <% else %>
             <div class="card-category py-3" 
                 style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(51,51,51,0.1)), 
@@ -27,27 +26,47 @@
         <% end %>
       </div>
       <div class="div-absolute">
-        <%= link_to profile_path(product.user.id) do %>
-          <% if product.user.photo.present? %>
-            <%= cl_image_tag product.user.photo.key, class: "d-flex banner-index-avatar" %>
+        <%= link_to profile_path(@product.user.id) do %>
+          <% if @product.user.photo.present? %>
+            <%= cl_image_tag @product.user.photo.key, class: "d-flex banner-index-avatar" %>
           <% else %>
             <%= image_tag "https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg", class: "d-flex banner-index-avatar" %>
           <% end %>
         <% end %>
-        <div class="banner-index-name"><%= product.user.first_name %></div>
-        <div class="banner-index-rating"><%= product.user.rating.nil? ? "Nova conta" : product.user.rating %></div>
+        <div class="banner-index-name"><%= @product.user.first_name %></div>
+        <div class="banner-index-rating"><%= @product.user.rating.nil? ? "Nova conta" : @product.user.rating %></div>
       </div>
     </div>
 
     <div class="col-2 my-3">
       <div class='d-flex align-items-center arrow'>
       <%# funciona implementar um ajax aqui? NÃO!!! %>
-        <%= link_to new_product_trade_path(product) do %>
+        <%= link_to new_product_trade_path(@product) do %>
           <i class="fas fa-heart"></i>
         <% end %>
       </div>
     </div>
 
+
+<%#--------------------------else-------------------------------------------------------------------------%>
+    <% else %>
+    <div class="col-2 my-3">
+      <div class='d-flex align-items-center justify-content-end arrow'>
+      </div>
+    </div>
+
+    <div class="col-8 my-3 d-flex align-items-center justify-content-center">
+      <div class="banner-sem-fotos">
+        <h1 class="sem-fotos"> Outros armários estão vazios por enquanto! Aproveite para atualizar o seu armário e 
+                               responder suas mensagens! </h1>
+      </div>
+    </div>
+
+    <div class="col-2 my-3">
+      <div class='d-flex align-items-center arrow'>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
 
