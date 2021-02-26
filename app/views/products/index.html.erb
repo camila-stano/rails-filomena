@@ -41,18 +41,13 @@
 
     <div class="col-2 my-3">
       <div class='d-flex align-items-center arrow'>
-        <%= link_to products_path do %>
-          <i class="fas fa-chevron-right"></i>
+      <%# funciona implementar um ajax aqui? NÃO!!! %>
+        <%= link_to new_product_trade_path(product) do %>
+          <i class="fas fa-heart"></i>
         <% end %>
       </div>
     </div>
 
-  </div>
-
-  <div class="btn-trade">
-    <div class='d-flex justify-content-end mb-3'>
-      <%= link_to "Eu quero!", new_product_trade_path(product), class: 'btn btn-warning rounded' %>
-    </div>
   </div>
 </div>
 

@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :products
   has_many :trades
+  has_many :product_removes
   has_one_attached :photo
 
   GENDER = ['Mulher', 'Homem', 'Prefiro não me identificar']
+  
   validates :first_name, presence: true
 end
