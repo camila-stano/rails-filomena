@@ -44,18 +44,27 @@
   <div class="info-not-available"></div>
 
   <div class="row d-flex">
-    <% @profile.products.order('created_at DESC').each do |product|  %>
-      <%next if product.available%> 
-      <div class="d-flex img-profile col-4 m-2">
-        <%= cl_image_tag(product.photos.first.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid img-arquived') %>
-        <div class=" btn-arquived-container"> 
-          <%if current_user == product.user%>
-            <div class="edit-delete-btn">
-              <%=link_to 'Desarquivar', unarquive_product_path(product), method: :patch, class: 'btn btn-delete btn-img-profile-arquived'%>
-            </div>
-          <%end%>
+    <% if @arquived %>
+      <% @profile.products.order('created_at DESC').each do |product|  %>
+        <%next if product.available%> 
+        <div class="d-flex img-profile col-4 m-2">
+          <%= cl_image_tag(product.photos.first.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid img-arquived') %>
+          <div class=" btn-arquived-container"> 
+            <%if current_user == product.user%>
+              <div class="edit-delete-btn">
+                <%=link_to 'Desarquivar', unarquive_product_path(product), method: :patch, class: 'btn btn-delete btn-img-profile-arquived'%>
+              </div>
+            <%end%>
+          </div>
         </div>
-      </div>
+      <%end%>
+    <%else%>
+        <div class="dont-have-products">
+          <div class="dont-have-products-title-btn">
+            <h3>Você não possui peças arquivadas!!</h3>  
+            <%= link_to 'Voltar ao meu armário!', profile_path(current_user), class: 'btn btn-primary add-product mr-4' %>
+          </div>
+        </div>
     <%end%>
   </div>
 <%#-------FOTOS ARQUIVADAS------------------------------------------------------------------------------------------%>
