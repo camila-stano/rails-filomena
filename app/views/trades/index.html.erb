@@ -13,15 +13,23 @@
         <div class="card-trade">
           <p class="text-filo"> <strong> Negociando com <%= trade.product.user.first_name %></strong> | <%= link_to "ver perfil", profile_path(trade.product.user)%> </p>
           <p> Peça: <%= trade.product.name %></p>
-          <p> Mensagem: <%= trade.content %></p>
-          <button class="btn btn-primary btn-sm"> Arquivar negociação </button>          
+          <p> Mensagem: <%= trade.content %></p>     
         </div>
       <% end %>
     </div>
   </div>
+  <% @trades.each do |trade| %>
+   <div class="row d-flex">
+      <div class="col-12">
+        <div class="card-trade-receb justify-content-right">
+          <p class="text-filo-white"> <strong> Recebeu proposta de <%= @user.find(trade.user_id).first_name %></strong> | <%= link_to "ver perfil", profile_path(trade.user_id), class: "text-filo-gray"%> </p>
+          <p> Peça: <%= @products.find(trade.product_id).name %></p>
+          <p> Mensagem: <%= trade.content %></p>      
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<footer>
+
   <%= render "shared/footer" %>
-</footer>

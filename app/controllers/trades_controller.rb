@@ -3,7 +3,27 @@ class TradesController < ApplicationController
   # before_action :validate_current_user
 
   def index
-    # @trades = Trade.all
+    all_trades = Trade.all
+    all_products = current_user.products
+    user_products = []
+    
+    all_products.each do |product|
+      user_products << product.id
+    end
+
+    @trades = []  
+    all_trades.each do |trade|
+      if user_products.include?(trade.product_id)
+        @trades << trade
+      end
+    end
+
+    if @trades.nil?
+      ""
+    end 
+
+    @user = User.all
+    @products = Product.all
   end
 
   def new

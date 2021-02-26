@@ -5,15 +5,14 @@ class ProductsController < ApplicationController
   def index
     #funciona colocar o shuffle antes para mostrar a ordem que renderizou primeiro? 
     
-   
     @products = Product.where(available: true).shuffle
-    if current_user.
-    raise
+
+
+
     #a seta será exclusivamente para a direita, que implica em trocar de peça, randomicamente >> ok
     #um botão com o x tira aquela peça do array de possibilidades que o cliente poderá ver
     #um botão de coração inicia a transação 
     
-
   end
 
   def show
