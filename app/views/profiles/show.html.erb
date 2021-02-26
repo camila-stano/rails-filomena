@@ -37,8 +37,10 @@
 
   <div class="row d-flex">
     <div class="col-12 profile-info btn-show-profile mb-5">
-      <% if current_user == @profile %>
+      <% if current_user == @profile && @available %>
         <%= link_to 'Adicionar um novo produto', new_product_path, class: 'btn btn-primary add-product mr-4' %>
+      <%else%>
+
       <% end%>
     </div>
   </div>
@@ -46,29 +48,42 @@
 <div class="info-available"></div>
 <div class="info-not-available"></div>
   <div class="row d-flex">
-    <% @profile.products.order('created_at DESC').each do |product| %>
-      <% next unless product.available %>
-      <div class="d-flex img-profile col-4">
-      <%#= esta lógica está quebrando!!! Funciona somente quando o usuário só tem uma foto %>
-        <%= cl_image_tag(product.photos.first.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ') %>
-        <div class=" btn-edit-delete-container"> 
-        <% if current_user == product.user %>
-          <div class="edit-delete-btn">
-            <%=link_to 'Editar', edit_product_path(product), class: 'btn btn-edit btn-img-profile' %>
-            <%=link_to 'Arquivar', arquive_product_path(product), method: :patch, class: 'btn btn-arquive btn-img-profile'%>
-            <%=link_to 'Deletar', product_path(product), method: :delete, class: 'btn btn-delete btn-img-profile mr-2' %>
+    <% if @available %>
+      <% @profile.products.order('created_at DESC').each do |product| %>
+        <% next unless product.available %>
+        <div class="d-flex img-profile col-4">
+        <%#= esta lógica está quebrando!!! Funciona somente quando o usuário só tem uma foto %>
+          <%=link_to cl_image_tag(product.photos.first.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid '), product_path(product)%>
+          <div class=" btn-edit-delete-container"> 
+          <% if current_user == product.user %>
+            <div class="edit-delete-btn">
+              <%=link_to 'Editar', edit_product_path(product), class: 'btn btn-edit btn-img-profile' %>
+              <%=link_to 'Arquivar', arquive_product_path(product), method: :patch, class: 'btn btn-arquive btn-img-profile'%>
+              <%=link_to 'Deletar', product_path(product), method: :delete, class: 'btn btn-delete btn-img-profile mr-2' %>
+            </div>
+          <%end%>
           </div>
-        <%end%>
         </div>
-      </div>
+      <%end%>
+    <%else%>
+      <%if @profile = current_user%>
+        <div class="dont-have-products-title-btn">
+          <div class="dont-have-products">
+            <h3>Você ainda não possui roupas no seu armários!!</h3>  
+            <%= link_to 'Adicione sua primeira roupa!!', new_product_path, class: 'btn btn-primary add-product mr-4' %>
+          </div>
+        </div>
+      <%else%>
+        <div class="dont-have-products-title-btn">
+          <h3><%= @profile.first_name %> ainda não possui roupas em seu armário!</h3>
+        </div>
+      <%end%>
     <%end%>
+  
   </div>
 
 
 <%# link_to review %>
-
-<br><br><br><br><br><br><br>
 </div>
-<footer>
+
   <%= render "shared/footer" %>
-</footer>

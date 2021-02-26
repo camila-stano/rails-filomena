@@ -69,3 +69,18 @@
     bottom: 0rem;
   }
 }
+
+.dont-have-products {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.dont-have-products-title-btn{
+  margin: auto;
+}
+.dont-have-products-title-btn h3{
+  color: $filo-gray;
+}
