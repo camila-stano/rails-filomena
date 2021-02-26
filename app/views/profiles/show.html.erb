@@ -37,8 +37,10 @@
 
   <div class="row d-flex">
     <div class="col-12 profile-info btn-show-profile mb-5">
-      <% if current_user == @profile %>
+      <% if current_user == @profile && @available %>
         <%= link_to 'Adicionar um novo produto', new_product_path, class: 'btn btn-primary add-product mr-4' %>
+      <%else%>
+
       <% end%>
     </div>
   </div>
@@ -51,7 +53,7 @@
         <% next unless product.available %>
         <div class="d-flex img-profile col-4">
         <%#= esta lógica está quebrando!!! Funciona somente quando o usuário só tem uma foto %>
-          <%= cl_image_tag(product.photos.first.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid ') %>
+          <%=link_to cl_image_tag(product.photos.first.key, transformation:[{crop: 'crop', width: 600, height: 600}, {crop: 'fill', width: 350, height: 350, gravity: 'auto', quality: 100}], class: 'img-fluid '), product_path(product)%>
           <div class=" btn-edit-delete-container"> 
           <% if current_user == product.user %>
             <div class="edit-delete-btn">
